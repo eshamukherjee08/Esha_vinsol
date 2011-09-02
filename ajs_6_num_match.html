@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Number Validation</title>
+	<script type = "text/javascript">
+	function show()
+	{
+	var my_string = document.myform.enter.value;
+	if(isNaN(my_string))
+	{
+		document.myform.result.value = false;
+		myform.submit.disabled = true;
+		alert ("sorry form cannot be submitted!");            
+	}
+	else
+	{
+		document.myform.result.value = true;
+	}
+  }
+	</script>
+</head>
+<body>
+	<form name = "myform">
+		ENTER NUMBER: <input type = "text" name = "enter" /><br/><br/>
+		RESULT: <input type = "text" name = "result"/><br/><br/><br/>
+		<input type = "button" name = "submit" value = "submit" onclick = "show()"/>
+</body>
+</html>		

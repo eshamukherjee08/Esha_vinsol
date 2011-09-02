@@ -1,0 +1,64 @@
+<html> 
+<head> 
+<title>Checkbox Event Handler</title> 
+<style type="text/css"> 
+#myGroup {visibility:hidden ; display : inline;}
+#myDrinks {visibility:hidden ; display : inline;}
+#myMovies {visibility:hidden}
+#myBikes {visibility:hidden}
+#div_f
+{
+	height : 100px;
+	overflow : auto;
+	/*border : 2px solid red;*/
+} 
+</style> 
+<script type="text/javascript"> 
+function toggle(chkbox, group) { 
+    var visSetting = (chkbox.checked) ? "visible" : "hidden"; 
+    document.getElementById(group).style.visibility = visSetting; 
+} 
+function swap(radBtn, group) { 
+    var modemsVisSetting = (group == "modems") ? ((radBtn.checked) ? "" : "none") : "none"; 
+    document.getElementById("modems").style.display = modemsVisSetting; 
+}
+</script> 
+</head> 
+<body>
+	<div id = "div_f"> 
+		<form>
+			 
+				<input type="checkbox" name="monitor" onclick="toggle(this, 'myGroup')" />COLOR
+						<span id="myGroup">
+  							<input type="checkbox" />YELLOW<br/>
+								&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />RED<br/>
+								&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />BLUE<br/>
+								&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />GREEN<br/> 
+								</span>
+						 
+					<input type="checkbox" name="monitor" onclick="toggle(this, 'myDrinks')" />DRINKS
+							<span id="myDrinks">
+	  						 <input type="checkbox" />PEPSI<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />COKE<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />DEW<br/> 
+									</span>
+							
+					<input type="checkbox" name="monitor" onclick="toggle(this, 'myMovies')" />MOVIES
+							<span id="myMovies">
+			  		 			<input type="checkbox" />DAR<br/>
+				 					&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />SIR<br/>
+			 						&emsp;&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />ZNMD<br/> 
+	 								</span>
+ 							
+					<input type="checkbox" name="monitor" onclick="toggle(this, 'myBikes')" />BIKES
+									<span id="myBikes">
+			  							<input type="checkbox" />V-ROD<br/>
+											&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />PULSAR<br/>
+											&emsp;&emsp;&emsp;&emsp;<input type="checkbox" />CBZ<br/> 
+											</span>
+									
+					
+		</form> 
+	</div>
+</body> 
+</html>

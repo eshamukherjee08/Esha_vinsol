@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Checkbox limitations</title>
+	<style type = "text/css">
+	#div1
+	{
+		 margin : auto;
+		 margin-top : 100px;
+		 border : 3px outset silver;
+		 width : 400px;
+	}
+	</style>
+	<script type = "text/javascript">
+	  function checkboxlimit(checkgroup, limit)
+		{
+			var checkgroup=checkgroup
+			var limit=limit
+			for (var i=0; i<checkgroup.length; i++)
+			{
+				checkgroup[i].onclick=function()
+				{ 
+					document.forms.myform.none.checked = false;
+					var checkedcount=0
+					for (var i=0; i<checkgroup.length; i++)
+					checkedcount+=(checkgroup[i].checked)? 1 : 0
+					if (checkedcount>limit)
+					{
+			 			alert("You can only select a maximum of 3 checkboxes")
+						this.checked=false
+					}
+				}                                                                                   
+			}
+		}
+		function uncheckAll(field)
+		{
+		for (i = 0; i < field.length; i++)
+			field[i].checked = false ;
+		}
+	</script>
+</head>
+<body>
+	<div id = "div1">
+		<p>Select Three weekdays from the following list:</p>
+		<form name="myform">
+		<input type="checkbox" name="day" value = "monday" /> MONDAY<br />
+		<input type="checkbox" name="day" value = "tuesday"/> TUESDAY<br />
+		<input type="checkbox" name="day" value = "wednesday"/> WEDNESDAY<br />
+		<input type="checkbox" name="day" value = "thursday"/> THURSDAY<br />
+		<input type="checkbox" name="day" value = "friday"/> FRIDAY<br/>
+		<input type="checkbox" name="day" value = "saturday"/> SATURDAY<br/>
+		<input type="checkbox" name="day" value = "sunday"/> SUNDAY<br/><br/><br/>
+		<input type="checkbox" name = "none" value = "none" onclick = "uncheckAll(document.myform.day)"/>NONE</br/>
+		</form>
+		<script type="text/javascript">
+		//Syntax: checkboxlimit(checkbox_reference, limit)
+		checkboxlimit(document.forms.myform.day, 3)
+		</script>
+	</div>
+</body>
+</html>		

@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Checkbox_check_uncheck</title>
+	<SCRIPT LANGUAGE="JavaScript">
+	
+	function checkAll(field)
+	{
+	for (i = 0; i < field.length; i++)
+		field[i].checked = true ;
+	}
+
+	function uncheckAll(field)
+	{
+	for (i = 0; i < field.length; i++)
+		field[i].checked = false ;
+	}
+	</script>
+</head>
+<body>
+	<form name="myform" action="checkboxes.asp" method="post">
+	<b>Here is a display of all your favourite colors:</b><br>
+	<input type="checkbox" name="list" value="1">Red<br>
+	<input type="checkbox" name="list" value="2">Green<br>
+	<input type="checkbox" name="list" value="3">Yellow<br>
+	<input type="checkbox" name="list" value="4">Black<br>
+	<input type="checkbox" name="list" value="5">White<br>
+
+	<input type="button" name="CheckAll" value="Check All"
+	onClick="checkAll(document.myform.list)">
+	<input type="button" name="UnCheckAll" value="Uncheck All"
+	onClick="uncheckAll(document.myform.list)">
+	<br>
+	</form>
+</body>
+</html>	
+		
+
+	
