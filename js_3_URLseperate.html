@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Prompt for URL</title>
+	<script type ="text/javascript">
+	function url_prompt()
+	{
+		var p = prompt("Enter your URL here:");
+		 if (p == null || p == "")
+		{
+			alert("Sorry! URL empty...try again!");
+		}
+		else
+		{
+			window1=window.open(p,"","width=400,height=450,top=200,left=200,scrollbars=0" );
+		} 
+	}
+	</script>
+</head>
+<body onload = "url_prompt();">
+</body>
+</html>	
