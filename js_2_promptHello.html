@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>display first name and last name</title>
+	<script type = "text/javascript">
+	function show_name()
+	{
+		var f = prompt("Please enter your first name!","Your first Name");
+		var s = prompt("Please enter your second name!","Your second Name");
+		if (f != null && f != "" && s != null && s != "")
+		{       
+			alert("Hello " + f+ " "+ s + "!");
+			document.write("Hello " + f+ " "+ s + "!");
+		}                                                      
+		else
+		{
+			alert("Sorry you never entered your name!TRY AGAIN!");
+		}
+	}
+	</script>
+</head>
+<body onLoad = "show_name()">
+</body>
+</html>	
+		

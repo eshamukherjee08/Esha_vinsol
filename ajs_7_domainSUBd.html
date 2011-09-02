@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Sub Domain verificaion</title>
+	<script type = "text/javascript">
+	function sub(url)
+	{
+		url = url.replace(new RegExp(/^\s+/),"");      //removes space frm both sides.
+		url = url.replace(new RegExp(/\s+$/),"");
+		url = url.replace(new RegExp(/\\/g),"/");         //convert backslash to forward slash.
+		url = url.replace(new RegExp(/^http\:\/\/|^https\:\/\/|^ftp\:\/\//i),"");  //removes the begining.
+		url = url.replace(new RegExp(/^www\./i),"");             //remove www.
+		url = url.replace(new RegExp(/\/(.*)/),"");          //remove string frm 1st fwd slash.
+		if (url.match(new RegExp(/\.[a-z]{2,3}\.[a-z]{2}$/i)))
+		{               //removes domain name.                                        
+	      url = url.replace(new RegExp(/\.[a-z]{2,3}\.[a-z]{2}$/i),"");
+		}
+		else if (url.match(new RegExp(/\.[a-z]{2,4}$/i)))   //removes .com etc.
+		{
+	      url = url.replace(new RegExp(/\.[a-z]{2,4}$/i),"");
+		}
+		if(url.match(new RegExp(/[a-zA-Z0-9]\./g)))
+		{
+			var dom = url.replace(new RegExp(/[a-zA-Z0-9]\./g),"");
+			alert("The Domain is:"+dom);
+			var subd = url.match(new RegExp(/[a-zA-Z0-9]\./g));
+			alert("The Sub-Domain is:"+subd);            
+		}
+  }
+  </script>
+</head>
+<body>
+	<form name = "myform">
+	<h3>Enter URL :<input type = "text" name = "url"></h3><br/>
+	<input type = "button" name = "check" value = "CHECK" onclick = "sub(document.forms.myform.url.value)">
+	</form>
+</body>
+</html>
