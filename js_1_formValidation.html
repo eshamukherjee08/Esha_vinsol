@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Exercise 1:validation of form</title>
+	<style type = "text/css">
+	*
+	{
+		padding : 0px;
+		margin : 0px;
+	}              
+	#container
+	{
+		position : static;
+		margin : auto;
+		margin-top : 20px;
+		border : 1px solid black;
+		width : 30%;
+		font-family : 'arial';
+	}
+	#header
+	{
+		position : relative;
+		color : white;
+		background : #73ab00; 
+		padding : 2px;
+		text-align : center;
+	}
+	#fcont
+	{
+		position : relative;
+		background : #f2f7c2;
+		padding : 20px 5px;
+	}      
+	#f_tb
+	{
+		border : 1px solid #73ab00;
+	}                           
+	#f_en
+	{
+		border : 1px solid #73ab00;
+		background : #ffe680;    
+	}
+	#pf
+	{
+	 font-size : 0.6em; 
+	}      
+	#ph
+	{
+		text-align : center;
+		font-size : 10px;
+	}
+	#but
+	{
+		background : #006400;
+		color : white;
+		margin-left : 165px;
+	}
+	</style>
+</head>                                                                                                                                                             
+<body>                                         
+	<div id = "container">
+		<div id = "header">
+			Registration Form
+		</div>
+			<form id = "fcont" name = "myform" method="get" action="submit.html" onsubmit = 'return validate()'>
+				Login ID &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id = "f_tb" type = "text" name = "logID"/><br/><br/>
+				Email &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input id = "f_en" type = "text" name = "email"/><br/><br/>
+				Name &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<input id = "f_en" type = "text" name = "name1"/><br/><br/>
+				Time Zone &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;
+				<select style = "border : 1px solid #73ab00">            
+					<option  value="GMT">GMT</option>
+					<option  value="IST">IST</option>
+				</select><br/><br/>
+				Home Page &emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<input id = "f_tb" type = "text" name = "url"/><br/><br/>
+				About Me <br/><textarea id = "f_tb" rows="8" cols="45" name="about"></textarea><br/><br/>
+				<input type = "checkbox" name = "check" style = "border : 1px solid #73ab00"/>Receive notification of comments.<br/>
+				<p id = "pf">You will be sent an e-mail when someone posts comments to your blog or album.</p>
+				<p id = "ph">Your password will be mailed to you.</p><br/>
+				<input type = "submit" id = "but" name = "submit" value = "GO"/>
+			</form>	
+	</div> 
+	<script type = "text/javascript">                       
+	function validate()
+	{
+		var a= document.forms.myform.logID.value;      														//stores value of logID.
+		var b= document.forms.myform.email.value;			 														//stores value of email.
+		var c= document.forms.myform.name1.value;			 														//stores value of name.
+		var d= document.forms.myform.url.value;				 														//stores value of url.
+		var e= document.forms.myform.about.value;			 														//stores value of textarea.
+		var atpos = b.indexOf("@");										 														//stores index position of @ in email.
+		var dotpos = b.lastIndexOf(".");							 														//stores index value of . in email id.         
+		var check="^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$";				//RegExp for validating URL.
+		var matchURL = d.match(check);                                            //matching url.
+		var len = e.length;                                                       //storing number of characters in textarea.
+	   if (a == null || a == '')                     														//FOR LOG ID.
+			{
+				alert("Please input valid log ID!");
+				document.forms.myform.logID.focus();
+				return false;
+			}
+			else if (atpos < 1 || dotpos < atpos+2 || dotpos+2 >= b.length)         //VALIDATING EMAIL ID.
+			{
+				alert("Please enter valid Email address!");
+				document.forms.myform.email.focus();
+				return false;
+			}
+			else if (c == null || c == '')                                          //VALIDATING NAME.
+			{
+				alert("Please enter your name!");
+				document.forms.myform.name1.focus();
+				return false;
+			}
+			else if (matchURL == null)                                              //VALIDATING URL.
+			{
+				alert("Please enter valid url(eg: http://www.xyz.com)!");
+				document.forms.myform.url.focus();
+				return false;
+			}              
+			else if (e == null || e == '' || len<50)                                 //VALIDATING TEXTAREA.
+			{
+				alert("Please enter minimum 50 characters in ABOUT ME!!");
+				document.forms.myform.about.focus();
+				return false;
+			}              
+			else
+			{
+				return true;
+			}
+	} 
+	</script>   
+</body>
+</html>
