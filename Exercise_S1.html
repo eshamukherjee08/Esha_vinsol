@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>PAYMENT_MODE</title>
+	<script type="text/javascript" src="jquery-1.3.2.js"></script>
+	<script language="JavaScript">
+	
+	  $(document).ready(function(){  
+      $("#credit").click(function(){  
+        $("#test").load("credit_card.html");  
+      });  
+    });
+    
+    $(document).ready(function(){  
+      $("#wire").click(function(){  
+        $("#test").load("wire_transfer.html");  
+      });  
+    });
+    function show_mode()
+    {
+      var num_check = document.my_form.number.value;
+      var exp_mon_check = document.my_form.expire_mon.value;
+      var exp_year_check = document.my_form.expire_year.value;
+      var pin_check = document.my_form.pin.value;
+      if(isNaN(num_check) || num_check == "")
+      {
+        document.getElementById("num_error").innerHTML = "Please enter number";
+      }
+      if(isNaN(exp_mon_check) || exp_mon_check == "" || isNaN(exp_year_check) || exp_year_check == "") 
+      {
+        document.getElementById("exp_error").innerHTML = "Please enter number";
+      }
+      if(isNaN(pin_check) || pin_check == "" || pin_check.length > 2)
+      {
+        document.getElementById("pin_error").innerHTML = "Please enter 3 digit number";
+      }
+    }
+	</script>
+</head>
+<body>
+	<form name="myform" action="paymode.asp" method="post">
+	<b>Payment:</b><br>
+  <input type="radio" id="credit" name="mode"/>CREDIT CARD<br />
+  <input type="radio" id="wire" name="mode"/>WIRE TRANSFER<br />
+	<input type="button" name="buy" value="BUY!" onClick="show_mode()">
+	<div id="test"></div>
+	</form>
+</body>
+</html>
