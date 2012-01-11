@@ -1,0 +1,73 @@
+<html>
+<head>
+  <title>Grouped Exercises</title>
+  <script type="text/javascript">
+  /*for Question 1 */
+    function bind_fun()
+    {
+      o = {name: "Objekt"};
+      e = {name: "Esha"};
+      g = bind_call.bind(o);
+      h = bind_call.bind(e);
+      alert(g);
+      alert(h);
+    }
+    
+    Function.prototype.bind = function(object) {
+      return this.call(object);
+    };
+    
+    function bind_call(){
+      return this.name;
+    }
+    
+    /*for Question 2 */
+    Array.prototype.forEach2 = function(fun, scope) {
+        var length = this.length;
+        for (i = 0; i < length; i++) {
+            fun.call(this, this[i], i);
+        }
+    };
+    
+    function print_array(element, index) {
+      alert("[" + index + "] is " + element ); 
+    }
+
+    
+    function run_forEach(){
+      var arr = ["esha", "someya", "abhi"];
+      arr.forEach2(print_array);
+    }
+    
+    /*for Question 3 */
+    function charFreq()
+    {
+      var string = document.getElementById("characters").value;
+      var my_object = {};
+      var length = string.length;
+      var property;
+      for (i = 0; i < length; i++)
+      { 
+        property = string[i];
+        if(isNaN(my_object[property])) 
+          {my_object[property] = 1;}
+        else 
+          {my_object[property] += 1;}
+        alert("Property Name:"+string[i]+", Value :"+my_object[string[i]]);
+      }
+    }
+    
+  </script>
+</head>
+<body>
+  <h3>EXERCISE 1.</h3>
+  <input type="button" id="binder" value="BIND" onClick="bind_fun()" /><br /><br />
+  <h3>EXERCISE 2.</h3>
+  <input type="button" id="for_each" value="forEach2" onClick="run_forEach()" /><br /><br />
+  <h3>EXERCISE 3.</h3>
+  <form name="myform">
+    <input type = "text" id = "characters" name="characters" />
+    <input type="button" name="check" value="CHECK!" onClick="charFreq()">
+  </form>
+</body>
+</html>
