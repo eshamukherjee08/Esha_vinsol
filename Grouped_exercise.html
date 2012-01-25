@@ -9,6 +9,7 @@
       e = {name: "Esha"};
       g = bind_call.bind(o);
       h = bind_call.bind(e);
+      
       alert(g);
       alert(h);
     }
@@ -53,8 +54,9 @@
           {my_object[property] = 1;}
         else 
           {my_object[property] += 1;}
-        alert("Property Name:"+string[i]+", Value :"+my_object[string[i]]);
+        // alert("Property Name:"+string[i]+", Value :"+my_object[string[i]]);
       }
+      alert(my_object["h"]);
     }
     
   </script>

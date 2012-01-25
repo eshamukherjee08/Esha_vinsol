@@ -18,28 +18,19 @@
       			});
       		});
       	});
-      });
-      
-      $(document).ready(function(){
+
         $("#remove").click(function(){
           $("#results").contents().remove();
         })
-      });
-      
-      $(document).ready(function(){
+
         $("#collapse").click(function(){
           $("#results").find('div').hide(2000);
         });
-      });
-      
-      $(document).ready(function(){
+
         $("#expand").click(function(){
           $("#results").find('div').show(2000);
         });
-      });
-      
-      $(document).ready(function(){
-        var url='http://search.twitter.com/search.json?callback=?&q=';
+
         $("#refresh").click(function(){
           var divs = $("#results").find('div');
           $.each(divs,function(i, c){
@@ -52,14 +43,11 @@
         		});
           });
         });
-      });
-      
-      
-      $(document).ready(function(){
-      var url="http://api.twitter.com/1/trends/daily.json";
+
+      var url_trend="http://api.twitter.com/1/trends/daily.json";
       	$('#trends').click(function(){
       	  $("#results").contents().remove();
-      		$.getJSON(url,function(json){
+      		$.getJSON(url_trend,function(json){
       			$.each(json.trends,function(i,tweet){
       			  $('#results').append('<p>'+tweet[1].name+'</p>');
       			});
