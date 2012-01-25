@@ -1,3 +1,4 @@
+<!-- Stick to either javascript or jquery -->
 <html>
 <head>
 	<title>PAYMENT_MODE</title>
@@ -6,21 +7,25 @@
 	
 	  $(document).ready(function(){  
       $("#credit").click(function(){  
+				// Loading with html, head tags will not make a valid html document
         $("#test").load("credit_card.html");  
       });  
     });
     
+		// Use document.ready only once
     $(document).ready(function(){  
       $("#wire").click(function(){  
+				// Loading with html, head tags will not make a valid html document
         $("#test").load("wire_transfer.html");  
       });  
     });
-    function show_mode()
-    {
+
+    function show_mode() {
       var num_check = document.my_form.number.value;
       var exp_mon_check = document.my_form.expire_mon.value;
       var exp_year_check = document.my_form.expire_year.value;
       var pin_check = document.my_form.pin.value;
+			
       if(isNaN(num_check) || num_check == "")
       {
         document.getElementById("num_error").innerHTML = "Please enter number";
@@ -37,7 +42,7 @@
 	</script>
 </head>
 <body>
-	<form name="myform" action="paymode.asp" method="post">
+	<form name="myform" action="#" method="post">
 	<b>Payment:</b><br>
   <input type="radio" id="credit" name="mode"/>CREDIT CARD<br />
   <input type="radio" id="wire" name="mode"/>WIRE TRANSFER<br />
