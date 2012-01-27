@@ -44,10 +44,10 @@
           });
         });
 
-      var url_trend="http://api.twitter.com/1/trends/daily.json";
+       var url_trend="http://api.twitter.com/1/trends/daily.json?callback=?";
       	$('#trends').click(function(){
       	  $("#results").contents().remove();
-      		$.getJSON(url_trend,function(json){
+      		$.getJSON(url_trend, {}, function(json){
       			$.each(json.trends,function(i,tweet){
       			  $('#results').append('<p>'+tweet[1].name+'</p>');
       			});
