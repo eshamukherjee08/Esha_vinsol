@@ -8,9 +8,10 @@
       var url='http://search.twitter.com/search.json?callback=?&q=';
       var query;
       	$('button').click(function(){
-      		query=$("#query_term").val();
+          query = $("#query_term").html($("#query_term").val()).text();
+          // query = $("#query_term").val();
+          // query = query.replace(/<\/?[^>]+>/gi,'');
 					// Create resultdiv only if query successfully returns
-          // $("#results").append('<h3>'+query+'</h3><div id="'+query+'"></div>');
       		$.getJSON(url+query,function(json){
       		  $("#results").append('<h3>'+query+'</h3><div id="'+query+'"></div>');
       			$.each(json.results,function(i,tweet){
