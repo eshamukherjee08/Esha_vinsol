@@ -3,71 +3,71 @@
 <!-- Correct indentation -->
 <!-- Card number length -> 16 -->
 <html>
-	<head>
-		<title>PAYMENT_MODE</title>
-		<script type="text/javascript" src="jquery-1.3.2.js"></script>
-	
-		<script language="javascript">
-	
-		  $(document).ready(function(){  
-	      $("#credit").click(function(){  
-					// Loading with html, head tags will not make a valid html document
-	        $("#credit_card").removeClass("hide");
-	        $("#wire_transfer").addClass("hide"); 
-	      });      
-			// Use document.ready only once
-	      $("#wire").click(function(){  
-					// Loading with html, head tags will not make a valid html document
-	        $("#wire_transfer").removeClass("hide");
-	        $("#credit_card").addClass("hide");  
-	      }); 
-      
-	      $("#buy_button").click(function(){
-	       var num_check = $("input[name='card_number']").val();
-	       var exp_mon_check = $("input[name='expire_mon']").val();
-	       var exp_year_check = $("input[name='expire_year']").val();
-	       var pin_check = $("input[name='pin']").val();
-	       $("#num_error").html("");
-	       $("#exp_error").html("");
-	       $("#pin_error").html("");
-	       if(!(/^\d+$/.test(num_check)) || num_check == "")
-	       {
-	         $("#num_error").html("Please enter number");
-	       }
-	       if(!(/^\d+$/.test(exp_mon_check)) || exp_mon_check == "" || !(/^\d+$/.test(exp_year_check)) || exp_year_check == "") 
-	       {
-	         $("#exp_error").html("Please enter number");
-	       }
-	       if(!(/^\d+$/.test(pin_check)) || pin_check == "")
-	       {
-	         $("#pin_error").html("Please enter number");
-	       }
-	      });
-	    });
+  <head>
+    <title>PAYMENT_MODE</title>
+    <script type="text/javascript" src="jquery-1.3.2.js"></script>
 
-		</script>
-		<style type="text/css">
-	  	.hide {
-    		display : none !important;	
-    	}
-  		</style>
-		</head>
-<body>
-	<form name="myform" action="#" method="post">
-	<b>Payment:</b><br>
-  <input type="radio" id="credit" name="mode"/>CREDIT CARD<br />
-  <input type="radio" id="wire" name="mode"/>WIRE TRANSFER<br />
-	<input type="button" id="buy_button" name="buy" value="BUY!">
-	<div id="credit_card" class="hide">
-	  <form id="form_cc">
-       Card Number *:<input type = "text" name = "card_number" size="19" maxlength="20"/><span id="num_error"></span><br/><br/>
-    	 Expiration *:<input type = "text" name = "expire_mon" size="1" maxlength="2"/>/<input type = "text" name = "expire_year" size="3" maxlength="4"/><span id="exp_error"></span><br/><br/>
-    	 3-digit security number *:<input type = "text" name = "pin" size="2" maxlength="3"/><span id="pin_error"></span><br/><br/>
+    <script language="javascript">
+
+      $(document).ready(function(){  
+        $("#credit").click(function(){  
+          // Loading with html, head tags will not make a valid html document
+          $("#credit_card").show();
+          $("#wire_transfer").hide(); 
+        });      
+        // Use document.ready only once
+        $("#wire").click(function(){  
+          // Loading with html, head tags will not make a valid html document
+          $("#wire_transfer").show();
+          $("#credit_card").hide();  
+        }); 
+
+        $("#buy_button").click(function(){
+          var num_check = $("input[name='card_number']").val();
+          var exp_mon_check = $("input[name='expire_mon']").val();
+          var exp_year_check = $("input[name='expire_year']").val();
+          var pin_check = $("input[name='pin']").val();
+          $("#num_error").html("");
+          $("#exp_error").html("");
+          $("#pin_error").html("");
+          if(!(/^\d+$/.test(num_check)) || num_check == "" || num_check.length < 16)
+          {
+            $("#num_error").html("Please enter 16 digit number");
+          }
+          if(!(/^\d+$/.test(exp_mon_check)) || exp_mon_check == "" || !(/^\d+$/.test(exp_year_check)) || exp_year_check == "") 
+          {
+            $("#exp_error").html("Please enter number");
+          }
+          if(!(/^\d+$/.test(pin_check)) || pin_check == "" || pin_check.length < 3)
+          {
+            $("#pin_error").html("Please enter 3 digit number");
+          }
+        });
+      });
+    </script>
+    
+    <style type="text/css">
+      .hide {
+        display : none;	
+      }
+    </style>
+  </head>
+  <body>
+    <form name="myform" action="#" method="post">
+      <b>Payment:</b><br>
+      <input type="radio" id="credit" name="mode"/>CREDIT CARD<br />
+      <input type="radio" id="wire" name="mode"/>WIRE TRANSFER<br />
+      <input type="button" id="buy_button" name="buy" value="BUY!">
+      <div id="credit_card" class="hide">
+        <form id="form_cc">
+          Card Number *:<input type = "text" name = "card_number" size="19" maxlength="20"/><span id="num_error"></span><br/><br/>
+          Expiration *:<input type = "text" name = "expire_mon" size="1" maxlength="2"/>/<input type = "text" name = "expire_year" size="3" maxlength="4"/><span id="exp_error"></span><br/><br/>
+          3-digit security number *:<input type = "text" name = "pin" size="2" maxlength="3"/><span id="pin_error"></span><br/><br/>
+        </form>
+      </div>
+      <div id="wire_transfer" class="hide">
+        Transfer the amount to: reg. 9570, account 0009286322 (in Denmark).
+      </div>
     </form>
-	</div>
-	<div id="wire_transfer" class="hide">
-	  Transfer the amount to: reg. 9570, account 0009286322 (in Denmark).
-	</div>
-	</form>
-</body>
+  </body>
 </html>
