@@ -24,7 +24,7 @@
     
       /*for Question 2 */
       Array.prototype.forEach2 = function(fun, scope) {
-        var length = this.length;
+        gvar length = this.length;
         for (i = 0; i < length; i++) {
             fun.call(this, this[i], i);
         }
