@@ -9,9 +9,7 @@
         e = {name: "Esha"};
         g = bind_call.bind(o);
         h = bind_call.bind(e);
-      
-        alert(g);
-        alert(h);
+        // g and h contains the repective returned values.
       }
     
       Function.prototype.bind = function(object) {
@@ -23,15 +21,15 @@
       }
     
       /*for Question 2 */
-      Array.prototype.forEach2 = function(fun, scope) {
-        gvar length = this.length;
+      Array.prototype.forEach2 = function(fun) {
+        var length = this.length;
         for (i = 0; i < length; i++) {
-            fun.call(this, this[i], i);
+          fun.call(null, this[i], i);
         }
       };
     
       function print_array(element, index) {
-        alert("[" + index + "] is " + element ); 
+        return[element, index];
       }
 
     
@@ -44,7 +42,7 @@
 			// Return object 
       function charFreq()
       {
-        var string = document.getElementById("characters").value;
+        var str = document.getElementById("characters").value;
         var my_object = {};
         var length = string.length;
         var property;
@@ -55,8 +53,8 @@
             {my_object[property] = 1;}
           else 
             {my_object[property] += 1;}
-          alert("Property Name:"+string[i]+", Value :"+my_object[string[i]]);
         }
+        return my_object;
       }
     </script>
   </head>
